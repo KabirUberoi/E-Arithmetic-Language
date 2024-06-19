@@ -3,7 +3,6 @@
 #include "ulimitedint.h"
 using namespace std;
 #include <iostream>
-#include <vector>
 
 UnlimitedInt* by2(UnlimitedInt* c){
     string s = c->to_string();
