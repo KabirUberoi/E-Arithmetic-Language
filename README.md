@@ -7,10 +7,7 @@ Welcome to the e++ project repository! This project contains a custom integer da
 2. [Features](#features)
 3. [Installation](#installation)
 4. [Usage](#usage)
-5. [Project Structure](#project-structure)
-6. [Examples](#examples)
-7. [Contributing](#contributing)
-8. [License](#license)
+5. [Examples](#examples)
 
 ## Introduction
 
