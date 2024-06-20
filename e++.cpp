@@ -21,24 +21,21 @@ int main() {
     while (true) {
         std::cout << "> ";
         std::getline(std::cin, line);
-
-        if (line == "exit") break;
-
         std::vector<std::string> tokens;
+
+        if(line == "exit") break;
         auto words_begin = std::sregex_iterator(line.begin(), line.end(), tokenRegex);
         auto words_end = std::sregex_iterator();
 
-        for (std::sregex_iterator i = words_begin; i != words_end; ++i) {
+        for(std::sregex_iterator i = words_begin;i != words_end;i++) {
             tokens.push_back(i->str());
         }
-
-        try {
+        try{
             evaluator.parse(tokens);
             std::cout << evaluator.eval() << std::endl;
         } catch (const std::exception &e) {
             std::cerr << "Error: " << e.what() << std::endl;
         }
     }
-
     return 0;
 }
