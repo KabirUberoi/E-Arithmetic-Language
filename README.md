@@ -44,7 +44,6 @@ The evaluator expects input in the form of properly bracketed infix expressions 
 
 ## Examples
 
-```
 (terminal) ./e++                      
 Enter expressions to evaluate or type 'exit' to quit:
 > x:=2    
@@ -59,4 +58,3 @@ Enter expressions to evaluate or type 'exit' to quit:
 1888888888888888888888888888888888888888888888888888888888888888888888888887/1
 > exit
 
-'''
