@@ -5,40 +5,39 @@ using namespace std;
 
 SymEntry* removeHelper(SymEntry* root, string k){
     if(root == nullptr){return root;}
-    if(root->key != k){
-        if(root->key > k){
-            root->left = removeHelper(root->left,k);
-        }
-        else{
-            root->right = removeHelper(root->right,k);
-        }
+    if(root->key > k){
+        root->left = removeHelper(root->left,k);
     }
-    if(root->left == nullptr && root->right == nullptr){delete root; return nullptr;}
-    else if(root->left == nullptr || root->right == nullptr){
+    else if(root->key <k){
+        root->right = removeHelper(root->right,k);
+    }
+    else{
+        if(root->left == nullptr && root->right == nullptr){delete root; return nullptr;}
         if(root->left == nullptr){
             SymEntry* t = root->right; 
             delete root; 
             return t;
         }
-        else{
+        if(root->right == nullptr){
             SymEntry* t = root->left; 
             delete root; 
             return t;
         }
-    }
-    else{
-        SymEntry* t = root->left;
-        while(t->right!=nullptr){t=t->right;}
+        else{
+            SymEntry* t = root->left;
+            while(t->right!=nullptr){t=t->right;}
 
-        string tempK = t->key; string p = t->val->get_p()->to_string(); string q = t->val->get_q()->to_string();
-        UnlimitedInt P(p); UnlimitedInt Q(q);
-        UnlimitedRational* tempVal = new UnlimitedRational(&P,&Q);
-        root->key = tempK; 
-        delete root->val; root->val = tempVal;
+            string tempK = t->key; string p = t->val->get_p()->to_string(); string q = t->val->get_q()->to_string();
+            UnlimitedInt P(p); UnlimitedInt Q(q);
+            UnlimitedRational* tempVal = new UnlimitedRational(&P,&Q);
+            root->key = tempK; 
+            delete root->val; root->val = tempVal;
 
-        root->left = removeHelper(root->left,tempK);
-        return root;
+            root->left = removeHelper(root->left,tempK);
+            return root;
+        }
     }
+    
 }
 
 void destructor(SymEntry* root){

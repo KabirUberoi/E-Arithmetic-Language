@@ -122,9 +122,11 @@ void Evaluator::parse(vector<string> code){
 // after a call to parse, and will be only called ONCE
 // for a tree
 // Also populate the symbol tables
-void Evaluator::eval(){
+string Evaluator::eval(){
     ExprTreeNode* root = this->expr_trees.back();
     UnlimitedRational* ans = EvalHelper(root->right, this->symtable);
+    string result = ans->get_frac_str();
     symtable->insert(root->left->id, ans);
     delete ans;
+    return result;
 }

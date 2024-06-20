@@ -22,6 +22,6 @@ public:
     // after a call to parse, and will be only called ONCE
     // for a tree
     // Also populate the symbol tables
-    void eval();
+    string eval();
 
 };
